@@ -20,7 +20,6 @@ class GifRepository @Inject constructor() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {response ->
-                    Log.d("gifrec", "gif rec $response")
                     if(response != null)
                         gifObject.postValue(response.data)
                 },
@@ -30,5 +29,5 @@ class GifRepository @Inject constructor() {
             )
     }
 
-    fun getGifList(key: String, limit: Int = GIF_LIMITS) = apiService.getSearchedGif(q = key)
+    fun getGifList(key: String, page: Int, limit: Int = GIF_LIMITS) = apiService.getSearchedGif(q = key, page = page)
 }

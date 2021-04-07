@@ -54,7 +54,7 @@ class RandomGifFragment: Fragment() {
 
     fun observableListener() {
         viewModel.gifObject.observe(viewLifecycleOwner, Observer {
-            showGif(it.url)
+            showGif(it.images.fixed_height.url)
             gifTitle.text = it.title
         })
         viewModel.gifError.observe(viewLifecycleOwner, Observer {
@@ -72,7 +72,6 @@ class RandomGifFragment: Fragment() {
             Glide.with(context)
                 .load(url)
                 .centerCrop()
-                .dontAnimate()
                 .error(R.drawable.ic_placeholder)
                 .into(gifImageView)
         }

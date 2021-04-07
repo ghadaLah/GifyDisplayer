@@ -14,5 +14,5 @@ interface ApiService {
     fun getRandomGif(@Query("api_key") apiKey: String = API_KEY): Single<GifResponse>
 
     @GET("search")
-    fun getSearchedGif(@Query("api_key") apiKey: String = API_KEY, @Query("q") q: String, @Query("limit") limit: Int = GIF_LIMITS): Single<GifListResponse>
+    fun getSearchedGif(@Query("api_key") apiKey: String = API_KEY, @Query("q") q: String, @Query("offset") page: Int, @Query("limit") limit: Int = GIF_LIMITS): Single<GifListResponse>
 }

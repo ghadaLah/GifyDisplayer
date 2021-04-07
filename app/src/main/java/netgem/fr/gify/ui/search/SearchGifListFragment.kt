@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.search_list_fragment.*
 import netgem.fr.gify.GifyDisplayerApp
@@ -49,15 +50,15 @@ class SearchGifListFragment: Fragment() {
     }
 
     fun setupAdapter() {
-        val linearLayout = LinearLayout(context)
-        linearLayout.orientation = LinearLayout.VERTICAL
+        val layoutManager = LinearLayoutManager(context)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        gifList.layoutManager = layoutManager
         adapter = GifAdapter(this) {redirectToFullScreen(it)}
         gifList.adapter = adapter
     }
 
     fun setObservableListeners() {
         viewModel.gifs.observe(viewLifecycleOwner, Observer {
-            Log.d("aa", "aaaa $it")
             adapter.submitList(it)
         })
 

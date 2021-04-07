@@ -31,7 +31,7 @@ class GifAdapter(private val fragment: Fragment, private val onItemClick: (Strin
     inner class GifsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bindItem(gifModel: GifModel?) {
             Glide.with(fragment)
-                .load(gifModel?.url)
+                .load(gifModel?.images?.fixed_height?.url)
                 .placeholder(R.drawable.ic_placeholder)
                 .error(R.drawable.ic_placeholder)
                 .into(itemView.gifImage)
